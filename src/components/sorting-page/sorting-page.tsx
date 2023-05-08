@@ -25,6 +25,8 @@ export const SortingPage: React.FC = () => {
   );
   const [sortType, setSortType] = useState<Direction>();
   const [isLoad, setIsLoad] = useState<boolean>(false);
+  const [isLoadAsc, setIsLoadAsc] = useState<boolean>(false);
+  const [isLoadDesc, setIsLoadDesc] = useState<boolean>(false);
 
   useEffect(() => {
     randomArr(setCreateArray, createArray);
@@ -47,22 +49,22 @@ export const SortingPage: React.FC = () => {
       sortType === Direction.Ascending &&
       radioType === SortingRadio.SelectionSort
     ) {
-      selectionSortAscending(createArray, setCreateArray, setIsLoad);
+      selectionSortAscending(createArray, setCreateArray, setIsLoad, setIsLoadAsc);
     }
     if (
       sortType === Direction.Descending &&
       radioType === SortingRadio.SelectionSort
     ) {
-      selectionSortDescending(createArray, setCreateArray, setIsLoad);
+      selectionSortDescending(createArray, setCreateArray, setIsLoad, setIsLoadDesc);
     }
     if (sortType === Direction.Ascending && radioType === SortingRadio.Bubble) {
-      sortingBubbleAscending(createArray, setCreateArray, setIsLoad);
+      sortingBubbleAscending(createArray, setCreateArray, setIsLoad, setIsLoadAsc);
     }
     if (
       sortType === Direction.Descending &&
       radioType === SortingRadio.Bubble
     ) {
-      sortingBubbleDescending(createArray, setCreateArray, setIsLoad);
+      sortingBubbleDescending(createArray, setCreateArray, setIsLoad, setIsLoadDesc);
     }
   };
 
@@ -88,7 +90,7 @@ export const SortingPage: React.FC = () => {
             text="По возрастанию"
             onClick={() => changeSortType(Direction.Ascending)}
             sorting={Direction.Ascending}
-            isLoader={isLoad}
+            isLoader={isLoadAsc}
             disabled={isLoad}
           />
           <Button
@@ -96,6 +98,7 @@ export const SortingPage: React.FC = () => {
             onClick={() => changeSortType(Direction.Descending)}
             sorting={Direction.Descending}
             disabled={isLoad}
+            isLoader={isLoadDesc}
           />
         </div>
         <div>
