@@ -58,6 +58,7 @@ export const selectionSortAscending = async (
   arr[arr.length - 1].color = ElementStates.Modified;
   setSortArray([...arr]);
   setLoad(false);
+  setIdLoadAsc(false)
 };
 
 export const selectionSortDescending = async (
@@ -67,7 +68,7 @@ export const selectionSortDescending = async (
   setIsLoadDesc : Dispatch<SetStateAction<boolean>>
 ) => {
   setLoad(true);
-  setIsLoadDesc(true)
+  setIsLoadDesc(true);
 
   for (let i = 0; i < arr.length - 1; i++) {
     let tmp = arr[i].value;
@@ -123,7 +124,7 @@ export const sortingBubbleAscending = async (
     arr[arr.length - i - 1].color = ElementStates.Modified;
   }
   setLoad(false);
-  setIdLoadAsc(false)
+  setIdLoadAsc(false);
 };
 
 export const sortingBubbleDescending = async (
@@ -133,6 +134,7 @@ export const sortingBubbleDescending = async (
   setIsLoadDesc : Dispatch<SetStateAction<boolean>>
 ) => {
   setLoad(true);
+  setIsLoadDesc(true);
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
       arr[j].color = ElementStates.Changing;
@@ -150,5 +152,5 @@ export const sortingBubbleDescending = async (
     arr[arr.length - i - 1].color = ElementStates.Modified;
   }
   setLoad(false);
-  setIsLoadDesc(true)
+  setIsLoadDesc(false);
 };
