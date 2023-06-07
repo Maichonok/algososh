@@ -27,7 +27,7 @@ export const selectionSortAscending = async (
   arr: TArr[],
   setSortArray: Dispatch<SetStateAction<TArr[]>>,
   setLoad: Dispatch<SetStateAction<boolean>>,
-  setIdLoadAsc : Dispatch<SetStateAction<boolean>>
+  setIdLoadAsc: Dispatch<SetStateAction<boolean>>
 ) => {
   setLoad(true);
   setIdLoadAsc(true);
@@ -55,17 +55,20 @@ export const selectionSortAscending = async (
 
     setSortArray([...arr]);
   }
+  if (arr.length <= 0 || arr.length === 1) {
+    return;
+  }
   arr[arr.length - 1].color = ElementStates.Modified;
   setSortArray([...arr]);
   setLoad(false);
-  setIdLoadAsc(false)
+  setIdLoadAsc(false);
 };
 
 export const selectionSortDescending = async (
   arr: TArr[],
   setSortArray: Dispatch<SetStateAction<TArr[]>>,
   setLoad: Dispatch<SetStateAction<boolean>>,
-  setIsLoadDesc : Dispatch<SetStateAction<boolean>>
+  setIsLoadDesc: Dispatch<SetStateAction<boolean>>
 ) => {
   setLoad(true);
   setIsLoadDesc(true);
@@ -93,17 +96,20 @@ export const selectionSortDescending = async (
 
     setSortArray([...arr]);
   }
+  if (arr.length <= 0 || arr.length === 1) {
+    return;
+  }
   arr[arr.length - 1].color = ElementStates.Modified;
   setSortArray([...arr]);
   setLoad(false);
-  setIsLoadDesc(false)
+  setIsLoadDesc(false);
 };
 
 export const sortingBubbleAscending = async (
   arr: TArr[],
   setSortArray: Dispatch<SetStateAction<TArr[]>>,
   setLoad: Dispatch<SetStateAction<boolean>>,
-  setIdLoadAsc : Dispatch<SetStateAction<boolean>>
+  setIdLoadAsc: Dispatch<SetStateAction<boolean>>
 ) => {
   setLoad(true);
   setIdLoadAsc(true);
@@ -120,7 +126,9 @@ export const sortingBubbleAscending = async (
       }
       arr[j].color = ElementStates.Default;
     }
-
+    if (arr.length <= 0 || arr.length === 1) {
+      return;
+    }
     arr[arr.length - i - 1].color = ElementStates.Modified;
   }
   setLoad(false);
@@ -131,7 +139,7 @@ export const sortingBubbleDescending = async (
   arr: TArr[],
   setSortArray: Dispatch<SetStateAction<TArr[]>>,
   setLoad: Dispatch<SetStateAction<boolean>>,
-  setIsLoadDesc : Dispatch<SetStateAction<boolean>>
+  setIsLoadDesc: Dispatch<SetStateAction<boolean>>
 ) => {
   setLoad(true);
   setIsLoadDesc(true);
@@ -148,7 +156,9 @@ export const sortingBubbleDescending = async (
       }
       arr[j].color = ElementStates.Default;
     }
-
+    if (arr.length <= 0 || arr.length === 1) {
+      return;
+    }
     arr[arr.length - i - 1].color = ElementStates.Modified;
   }
   setLoad(false);
