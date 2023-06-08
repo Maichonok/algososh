@@ -6,6 +6,7 @@ import {
   CHANGING_STATE,
   SUBMIT_BUTTON,
   RESET_BUTTON,
+  BUTTON,
 } from "../constant/constant";
 
 describe("Страница очередь работает корректно", function () {
@@ -56,12 +57,12 @@ describe("Страница очередь работает корректно", 
 
   it("Удаление эл-та работает корректно", function () {
     for (let i = 1; i < 4; i++) {
-      cy.get("input").type(i);
+      cy.get("input[type='text']").type(i);
       cy.get(SUBMIT_BUTTON).should("not.be.disabled").click();
-      cy.wait(500);
+      cy.wait(2000);
     }
-    cy.get("button").should("not.be.disabled").click();
-
+   
+    cy.get(`${BUTTON}[class^="text"]`).should("not.be.disabled").click();
     cy.get('[class^="queue-page_list"]')
       .find(CIRCLE_BOX)
       .find(CIRCLE)
